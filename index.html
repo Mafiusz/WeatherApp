@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="shortcut icon" href="#" />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+            integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+            crossorigin=""
+        />
+        <script
+            src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+            integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+            crossorigin=""
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script
+            src="https://kit.fontawesome.com/33e116f8ab.js"
+            crossorigin="anonymous"
+        ></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+        <script defer src="script.js"></script>
+    </head>
+    <body>
+        <div class="app">
+            <div class="container">
+                <div class="container-left">
+                    <div class="title">
+                        <div class="title-icon-box">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <p class="title-head">Weathy</p>
+                    </div>
+                    <nav class="nav">
+                        <ul class="nav-links">
+                            <li class="nav-link active nav-dashboard">
+                                <a href="#"
+                                    ><i class="fa-solid fa-house-user"></i
+                                    >Dashboard</a
+                                >
+                            </li>
+                            <li class="nav-link nav-map">
+                                <a href="#"
+                                    ><i class="fa-solid fa-map"></i>Map</a
+                                >
+                            </li>
+                        </ul>
+                    </nav>
+                    <i class="fa-solid fa-xmark close-icon"></i>
+                </div>
+                <div class="container-middle">
+                    <div class="container-middle-top">
+                        <div class="date-box">
+                            <p class="month-year">January 2020</p>
+                            <p class="full-date">Thursday, Jan 4, 2022</p>
+                        </div>
+                        <div class="search-location-box">
+                            <form action="" class="search-from">
+                                <input
+                                    type="text"
+                                    placeholder="Search location here"
+                                    class="search-input"
+                                />
+                                <button
+                                    type="submit"
+                                    value=""
+                                    class="search-btn fa-solid fa-magnifying-glass"
+                                ></button>
+                            </form>
+                            <label class="error-search" for=""
+                                >Please enter valid city name</label
+                            >
+                        </div>
+                        <i class="icon fa-solid fa-bars icon-bars"></i>
+                        <i
+                            class="icon fa-solid fa-location-arrow icon-navigation"
+                        ></i>
+                    </div>
+                    <div class="container-middle-middle">
+                        <h2 class="heading-secondary">Today overview</h2>
+                        <div class="statistic-box">
+                            <div class="statisic-little-box">
+                                <i class="fa-solid fa-wind"></i>
+                                <div class="statistic-description">
+                                    <p class="parameter">Wind Speed</p>
+                                    <p class="parameter-value wind-speed">
+                                        12km/h
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="statisic-little-box">
+                                <i class="fa-solid fa-cloud-rain"></i>
+                                <div class="statistic-description">
+                                    <p class="parameter">Rain Chanse</p>
+                                    <p class="parameter-value rain-chance">
+                                        24%
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="statisic-little-box">
+                                <i class="fa-solid fa-water"></i>
+                                <div class="statistic-description">
+                                    <p class="parameter">Pressure</p>
+                                    <p class="parameter-value pressure">
+                                        720hpa
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="statisic-little-box">
+                                <i class="fa-solid fa-droplet"></i>
+                                <div class="statistic-description">
+                                    <p class="parameter">Humidity</p>
+                                    <p class="parameter-value humidity">24%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-middle-bottom">
+                        <h2 class="heading-secondary">Weather in next days</h2>
+                        <div class="area">
+                            <canvas
+                                id="temp-graph"
+                                width="510"
+                                height="215"
+                            ></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-right">
+                    <div class="place-actual-time">
+                        <div class="place-box">
+                            <p class="city">Bialystok</p>
+                            <p class="country">Poland</p>
+                        </div>
+                        <p class="actual-time">08:54 AM</p>
+                    </div>
+                    <div class="weather">
+                        <div class="weather-icon-box">
+                            <img
+                                src="http://openweathermap.org/img/wn/04d@2x.png"
+                                alt=""
+                                class="weather-icon"
+                            />
+                        </div>
+                        <p class="temp">20° C</p>
+                        <p class="weather-description">Cloudy</p>
+                    </div>
+                    <div class="future-weather">
+                        <h3 class="heading-tertiary">Next 3 days</h3>
+                        <div class="next-weather-box">
+                            <div class="weather-box">
+                                <h4 class="next-day-title title1day">Sun</h4>
+                                <img
+                                    src="http://openweathermap.org/img/wn/04d@2x.png"
+                                    alt=""
+                                    class="next-weather-icon icon1day"
+                                />
+                                <p class="next-temp temp1day">20° C</p>
+                            </div>
+                            <div class="weather-box">
+                                <h4 class="next-day-title title2day">Sun</h4>
+                                <img
+                                    src="http://openweathermap.org/img/wn/04d@2x.png"
+                                    alt=""
+                                    class="next-weather-icon icon2day"
+                                />
+                                <p class="next-temp temp2day">20° C</p>
+                            </div>
+                            <div class="weather-box">
+                                <h4 class="next-day-title title3day">Sun</h4>
+                                <img
+                                    src="http://openweathermap.org/img/wn/04d@2x.png"
+                                    alt=""
+                                    class="next-weather-icon icon3day"
+                                />
+                                <p class="next-temp temp3day">20° C</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sunrise-sunset">
+                        <h3 class="heading-tertiary">Sunrise & Sunset</h3>
+                        <div class="sunrise-box">
+                            <i class="fa-regular fa-sun"></i>
+                            <div class="sunrise-box-time">
+                                <p class="sunrise">Sunrise</p>
+                                <p class="sunrise-time">4:20 AM</p>
+                            </div>
+                            <p class="sunrise-time-when">4 hours ago</p>
+                        </div>
+                        <div class="sunset-box">
+                            <i class="fa-regular fa-moon"></i>
+                            <div class="sunset-box-time">
+                                <p class="sunset">Sunset</p>
+                                <p class="sunset-time">4:20 AM</p>
+                            </div>
+                            <p class="sunset-time-when">4 hours ago</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="double-container">
+                    <div class="double-container-top">
+                        <div class="date-box date-box-map">
+                            <p class="month-year month-year-map">
+                                January 2020
+                            </p>
+                            <p class="full-date full-date-map">
+                                Thursday, Jan 4, 2022
+                            </p>
+                        </div>
+                        <i class="icon icon-map fa-solid fa-bars icon-bars icon-bars-map"></i>
+                        <i
+                            class="icon icon-map fa-solid fa-location-arrow icon-navigation icon-navigation-map"
+                        ></i>
+                        <div class="place-actual-time place-actual-time-map">
+                            <div class="place-box">
+                                <p class="city city-map">Bialystok</p>
+                                <p class="country country-map">RUssia</p>
+                            </div>
+                            <p class="actual-time actual-time-map">08:54 AM</p>
+                        </div>
+                    </div>
+                    <div class="double-container-bottom">
+                        <h2 class="heading-secondary">
+                            Look map at this place!
+                        </h2>
+                        <div id="map"></div>
+                    </div>
+                    <!-- <div class="container-middle-top">
+                        <div class="date-box">
+                            <p class="month-year">January 2020</p>
+                            <p class="full-date">Thursday, Jan 4, 2022</p>
+                        </div>
+                        <div class="search-location-box">
+                            <form action="" class="search-from">
+                                <input
+                                    type="text"
+                                    placeholder="Search location here"
+                                    class="search-input"
+                                />
+                                <button
+                                    type="submit"
+                                    value=""
+                                    class="search-btn fa-solid fa-magnifying-glass"
+                                ></button>
+                            </form>
+                            <label class="error-search" for=""
+                                >Please enter valid city name</label
+                            >
+                        </div>
+                        <i
+                            class="icon fa-solid fa-location-arrow icon-navigation"
+                        ></i> -->
+                </div>
+            </div>
+            <div class="start">
+                <h2 class="heading-starting">Click here to get location</h2>
+                <button class="btn btn-locate">Locate</button>
+            </div>
+        </div>
+    </body>
+</html>
