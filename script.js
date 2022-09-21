@@ -170,7 +170,7 @@ let map;
 
 const getMap = (response) => {
     const { lat, lon } = response.city.coord;
-=    if (map != null) {
+    if (map != null) {
         map.remove();
     }
 
