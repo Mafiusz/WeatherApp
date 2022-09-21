@@ -168,6 +168,12 @@ const actualDisplay = (response) => {
 
 let map;
 
+const newFeature = () => {
+    console.log("Welcome to application");
+};
+
+newFeature();
+
 const getMap = (response) => {
     const { lat, lon } = response.city.coord;
     if (map != null) {
